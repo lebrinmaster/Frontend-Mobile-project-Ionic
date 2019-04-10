@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Add new post
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input placeholder="Type your title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Post</ion-label>
+    <ion-textarea placeholder="Type your post"></ion-textarea>
+  </ion-item>
+  <ion-button color="success">
+    <ion-label><span style="margin-right: 1em;">Add Files</span></ion-label>
+    <ion-icon name="attach"></ion-icon>
+  </ion-button>
+  <ion-card>
+    Downloaded files here...
+  </ion-card>
+  <ion-item>
+    <ion-label position="stacked">Tags</ion-label>
+    <ion-input #tag></ion-input>
+  </ion-item>
+  <ion-button fill="solid" color="success" (click)="add(tag.value)">
+    <ion-label><span style="margin-right: 1em;">Add Tag</span></ion-label>
+    <ion-icon name="add-circle"></ion-icon>
+  </ion-button>
+  <ion-card>
+    <ion-chip outline color="primary">
+      <ion-label>Button Chip</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </ion-card>
+
+
+  <ion-button class="w-100" routerLink="" routerDirection="forward">
+    <ion-ripple-effect></ion-ripple-effect>
+    Submit
+  </ion-button>
+
+</ion-content>

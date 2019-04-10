@@ -1,0 +1,38 @@
+<ion-content padding>
+  <img src="../../assets/logo.png" alt="Logo">
+  <form [formGroup]="loginForm" novalidate>
+    <ion-item>
+      <ion-label color="#424242" position="floating" type="email">Email</ion-label>
+      <ion-input formControlName="email" autofocus="true"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of error_messages.email">
+        <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input 
+        [type]="hide ? 'password' : 'text'" 
+        formControlName="password" 
+        type="password">
+      </ion-input>
+      <ion-icon slot="end" name="{{hide ? 'eye-off' : 'eye'}}" (click)="hide = !hide"></ion-icon>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of error_messages.password">
+        <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-button [disabled]=!loginForm.valid shape="round" expand="block" routerLink="" routerDirection="forward">
+      <ion-ripple-effect></ion-ripple-effect>
+      Submit
+    </ion-button>
+  </form>
+</ion-content>

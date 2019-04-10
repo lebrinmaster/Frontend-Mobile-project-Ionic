@@ -1,23 +1,67 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
 
-      <ion-item>
-        <ion-label 
-        position="floating" 
-        >Floating Label</ion-label>
-        <ion-input
-        clearInput
-        autofocus="true"
-        value="clear me"></ion-input>
-      </ion-item>
+  <ion-item>
+    <ion-button fill="solid" expand="block" color="light" class="addnew" routerLink="add">
+      <div style="padding: 1em 2em">
+        <p style="font-size: 1.5em; margin: .2em; font-weight: 300; color:#424242;">+</p>
+        <span style="text-transform: none; color: #424242;font-weight: 400;">Add new</span>
+      </div>
+    </ion-button>
+  </ion-item>
+  <ion-card class="post">
+    <ion-card-header>
+      <ion-item-divider>
+        <ion-card-subtitle>April 9, 2019</ion-card-subtitle>
+      </ion-item-divider>
+      <ion-card-title>Первый твит</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Пишу для теста, ибо нужно проверить как это все будет выглядить,
+      все таки ж отличное приложение (надеюсь). 
+    </ion-card-content>
+    <ion-toolbar>
+      <ion-buttons slot="primary">
+        <ion-button fill="clear" color="dark" class="edition">
+          Edit 
+        </ion-button>
+        <ion-button color="danger" class="edition">
+          Delete 
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-card>
+
+  <ion-card class="post">
+    <ion-card-header>
+      <ion-item-divider>
+        <ion-card-subtitle>April 15, 2019</ion-card-subtitle>
+      </ion-item-divider>
+      <ion-card-title>Второй твит</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Пишу для теста тоже, ибо нужно проверить как это все будет выглядить,
+      все таки ж отличное приложение (надеюсь). побольше букв
+    </ion-card-content>
+    <ion-toolbar>
+      <ion-buttons slot="primary">
+        <ion-button fill="clear" color="dark" class="edition">
+          Edit 
+        </ion-button>
+        <ion-button color="danger" class="edition">
+          Delete 
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-card>
 </ion-content>

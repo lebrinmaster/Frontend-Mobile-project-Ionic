@@ -20,4 +20,8 @@ import { HomePage } from './home.page';
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule {
+  click(){
+    console.log("12323")
+  }
+}

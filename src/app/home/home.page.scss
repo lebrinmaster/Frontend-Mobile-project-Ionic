@@ -1,2 +1,50 @@
 ion-input{
+  //font-style: italic;
+  font-weight: 500;
+}
+.addnew{
+  margin: auto;
+  font-size: 1.5em;
+  width: auto;
+  height: auto;
+}
+ion-label{
+  font-weight: 600;
+  color: #424242;
+}
+ion-title{
+  color: #424242;
+}
+ion-tabs{
+  bottom: 0;
+  position:fixed;
+}
+.post{
+  height: auto;
+}
+.edition{
+  width: 50%;
+}
+ion-item{
+  padding: 2em;
+  --border-color: transparent;
+  vertical-align: middle;
+  display: flex;
+}
+ion-icon{
+  height: 5vh;
+  width: 9vw;
+  margin:0;
+  margin-inline-start: 0em !important;
+  -webkit-margin-start: 0em !important;
+}
+ion-card-subtitle{
+  font-weight: 400;
+  font-size: 1.5em;
+  margin-bottom: .5em;
+}
+ion-card-title{
+  font-weight: 500;
+  text-align: end;
+  margin-top: 1em;
 }
