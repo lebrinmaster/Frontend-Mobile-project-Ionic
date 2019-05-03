@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-button fill="solid" expand="block" color="light" class="addnew" routerLink="add">
+      <div style="padding: 1em 2em">
+        <p style="font-size: 1.5em; margin: .2em; font-weight: 300; color:#424242;">+</p>
+        <span style="text-transform: none; color: #424242;font-weight: 400;">Add new</span>
+      </div>
+    </ion-button>
+  </ion-item>
+
+  <ion-card *ngFor="let post of data; let i = index">    
+    <ion-card class="post" routerLink="item/{{post._id}}">
+      <ion-ripple-effect></ion-ripple-effect>
+        <ion-card-header>
+          <ion-item-divider>
+            <ion-card-subtitle>
+                <span class="date">{{post.date}}</span>
+                <span>
+                  <ion-icon class="iconPost" *ngFor="let icon of post.files" name="{{icon.icon}}" color="dark"></ion-icon>
+                </span>
+            </ion-card-subtitle>
+          </ion-item-divider>
+          <ion-card-title>{{post.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item style="padding: 0em">
+            <span class="text">{{post.text}}</span>
+              <span *ngIf="post.text.length > 30"><a href="item/{{post._id}}"> (more)</a></span>
+              
+          </ion-item>
+          <ion-chip *ngFor="let tag of post.tags; let i = index;" outline color="tertiary">
+            <ion-label class="disable">{{tag}}</ion-label>
+          </ion-chip>
+        </ion-card-content>
+      </ion-card>
+      <ion-toolbar>
+        <ion-buttons slot="primary">
+          <ion-button fill="clear" color="dark" class="edition" routerLink="item/{{post._id}}/edit">
+            Edit 
+          </ion-button>
+          <ion-button fill="clear" color="dark" class="edition" (click)="socialActionSheet()">
+            <ion-icon name="share"></ion-icon>
+            </ion-button>
+          <ion-button color="danger" class="edition" (click)="deletePost(i, post._id)">
+            Delete 
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card>
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Add new post
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input #title placeholder="Type your title" clearInput></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label position="stacked">Post</ion-label>
+    <ion-textarea #post placeholder="Type your post" clearInput></ion-textarea>
+  </ion-item>
+  <ion-button *ngIf="files.length < 3" (click)="openActionSheet()" color="success">
+    <ion-label><span style="margin-right: 1em;">Add Files</span></ion-label>
+    <ion-icon name="attach"></ion-icon>
+  </ion-button>
+  <ion-card>
+    <p *ngIf="files.length < 1">Downloaded files here...</p>
+    <ion-chip *ngFor="let file of files; let i = index" outline color="primary" (click)="deleteFile(i)">
+        <ion-icon name={{file.icon}}></ion-icon>  
+      <ion-label>{{file.title}}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </ion-card>
+  <ion-item>
+    <ion-label position="stacked">Tags</ion-label>
+    <ion-input #tag ></ion-input>
+  </ion-item>
+  <ion-button *ngIf="tags.length < 5" fill="solid" color="success" (click)="addTag(tag.value)">
+    <ion-label><span style="margin-right: 1em;">Add Tag</span></ion-label>
+    <ion-icon name="add-circle"></ion-icon>
+  </ion-button>
+  <ion-card>
+    <ion-chip 
+      *ngFor="let tag of tags; let i = index" 
+      outline 
+      color="primary"
+      (click)="deleteTag(i)">
+      <ion-label>{{tags[i]}}</ion-label>
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-chip>
+  </ion-card>
+
+
+  <ion-button class="w-100" routerLink="" routerDirection="forward" (click)="addPost(title.value, post.value)">
+    <ion-ripple-effect></ion-ripple-effect>
+    Submit
+  </ion-button>
+
+</ion-content>

@@ -1,9 +1,11 @@
 <ion-content padding>
+<div>
   <img src="../../assets/logo.png" alt="Logo">
   <form [formGroup]="loginForm" novalidate>
+
     <ion-item>
-      <ion-label color="#424242" position="floating" type="email">Email</ion-label>
-      <ion-input formControlName="email" autofocus="true"></ion-input>
+      <ion-label color="#424242" position="floating">Email</ion-label>
+      <ion-input formControlName="email" #email type="email"></ion-input>
     </ion-item>
 
     <div class="validation-errors">
@@ -17,6 +19,7 @@
     <ion-item>
       <ion-label position="floating">Password</ion-label>
       <ion-input 
+        #password
         [type]="hide ? 'password' : 'text'" 
         formControlName="password" 
         type="password">
@@ -30,9 +33,20 @@
         </div>
       </ng-container>
     </div>
-    <ion-button [disabled]=!loginForm.valid shape="round" expand="block" routerLink="" routerDirection="forward">
+    <ion-button [disabled]=!loginForm.valid shape="round" expand="block" routerDirection="forward" (click)="login(email.value, password.value)">
       <ion-ripple-effect></ion-ripple-effect>
       Submit
     </ion-button>
   </form>
+</div>
+<ion-button
+  color="danger"
+  style="text-transform: none;" 
+  fill="clear" 
+  expand="block" 
+  routerDirection="forward" 
+  routerlink="register"
+  (click)="register()"
+>Registration
+</ion-button>
 </ion-content>

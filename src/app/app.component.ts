@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './Services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -21,14 +22,16 @@ export class AppComponent {
       icon: 'list'
     },
     {
-      title: 'Login',
+      title: 'Logout',
       url: '/login',
-      icon: 'log-in'
+      icon: 'log-out',
+      function: this.authService.logout()
     },
     
   ];
 
   constructor(
+    private authService: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar

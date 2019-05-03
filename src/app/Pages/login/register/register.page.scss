@@ -2,22 +2,23 @@ ion-content{
     height: 100vh;
 }
 img{
-    padding: 3em;
+    padding: 1em;
     margin: auto;
-    max-width: 100%;
+    max-width: 50%;
     display: block;
 }
 ion-item{
     margin: 0em 2em;
 }
 ion-button{
-    margin: 2em 2em 0em 2em;
-    
+    margin: 2em 2em 0em 2em;    
 }
 .validation-errors{
-    margin: 0em 2em;
+    //margin: 0em 2em;
 }
 .error-message{
+    width: 70%;
+    margin: auto;
     font-size: small;
     color: #f04141;
     margin-top: .5em;

@@ -1,0 +1,84 @@
+<ion-content padding>
+  <img src="../../assets/logo.png" alt="Logo">
+  <form [formGroup]="registerForm" novalidate>
+    
+    <ion-item>
+      <ion-label color="#424242" position="floating" >Email</ion-label>
+      <ion-input formControlName="email" type="email" #email></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+        <ng-container *ngFor="let validation of error_messages.email">
+          <div class="error-message" 
+            *ngIf="registerForm.get('email').hasError(validation.type) && registerForm.get('email').touched"
+          >
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input 
+        type="text"
+        #username
+        formControlName="username">
+      </ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of error_messages.username">
+        <div class="error-message" *ngIf="registerForm.get('username').hasError(validation.type) && 
+        registerForm.get('username').dirty">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input 
+        type="text"
+        #password
+        formControlName="password">
+      </ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of error_messages.password">
+        <div class="error-message" *ngIf="registerForm.get('password').hasError(validation.type) && 
+        registerForm.get('password').dirty">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Repeat password</ion-label>
+      <ion-input 
+        #rpassword
+        type="text"
+        formControlName="rpassword">
+      </ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of error_messages.rpassword">
+        <div class="error-message" *ngIf="registerForm.get('rpassword').hasError(validation.type) && 
+        registerForm.get('rpassword').dirty">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button 
+      [disabled]=!registerForm.valid
+      shape="round" 
+      expand="block" 
+      routerDirection="forward" 
+      (click)="register(email.value, username.value, rpassword.value)">
+      <ion-ripple-effect></ion-ripple-effect>
+      Submit
+    </ion-button>
+  </form>
+</ion-content>

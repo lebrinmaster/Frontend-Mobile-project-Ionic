@@ -2,6 +2,21 @@ ion-input{
   //font-style: italic;
   font-weight: 500;
 }
+.disable{
+  font-weight: 400; 
+  color: #424242; 
+}
+.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    //max-width: 200px;
+}
+.iconPost{
+  height: 3vh;
+  width: 7vw;
+  vertical-align: middle;
+}
 .addnew{
   margin: auto;
   font-size: 1.5em;
@@ -21,6 +36,12 @@ ion-tabs{
 }
 .post{
   height: auto;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0;
+  -webkit-margin-end: 0;
+  margin-inline-end: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .edition{
   width: 50%;
@@ -39,9 +60,12 @@ ion-icon{
   -webkit-margin-start: 0em !important;
 }
 ion-card-subtitle{
+  width: 100%;
   font-weight: 400;
   font-size: 1.5em;
   margin-bottom: .5em;
+  justify-content: space-between;
+  display: flex;
 }
 ion-card-title{
   font-weight: 500;

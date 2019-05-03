@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-label>{{data.title}}</ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item class="date">
+    <h2>{{data.date}}</h2>
+  </ion-item>
+  <ion-item>
+    <p class="text">
+      {{data.text}}
+      <br>
+      <br>
+      <ion-chip *ngFor="let tag of data.tags; let i = index;" outline color="tertiary">
+        <ion-label class="disable">{{tag}}</ion-label>
+      </ion-chip>
+    </p>
+
+  </ion-item>
+  <ion-item>
+    <a *ngFor="let file of data.files; let i = index;" href="{{file.url}}">
+      <ion-chip outline color="tertiary">
+        <ion-icon class="disable" name="{{file.icon}}">{{file.icon}}</ion-icon>
+        <ion-label class="disable">{{file.title}}</ion-label>
+      </ion-chip>
+    </a>
+  </ion-item>
+  <ion-item>
+    <p>{{data._id}}</p>
+  </ion-item>
+
+</ion-content>
