@@ -3,7 +3,6 @@ import { PostService } from '../../../Services/post.service';
 import { ActionSheetController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -12,51 +11,52 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  posts: any = []; //array with posts. Soon i will push here posts.
-  tags: any = []; //array with tags
+  posts: any = []; // array with posts. Soon i will push here posts.
+  tags: any = []; // array with tags
   files: any = []; // array of objects with files
-  icons: any = []; //delete soon
+  icons: any = []; // delete soon
   token: String;
-  date: any; //variable with date
-  object: Object = {}; //object that will be sent to server
+  date: any; // variable with date
+  object: Object = {}; // object that will be sent to server
 
 
   constructor(
-    public httpClient: HttpClient, 
-    private postService: PostService, 
+    public httpClient: HttpClient,
+    private postService: PostService,
     public actionSheetController: ActionSheetController,
-    public storage: Storage) { }
+    public storage: Storage
+    ) { }
 
   ngOnInit() {
-    this.storage.get("token").then(token => {
+    this.storage.get('token').then(token => {
       this.token = token;
 
     this.postService.getPosts().then(
-      (posts:any) => {
+      (posts: any) => {
           this.posts = posts.slice().reverse();
           console.log(this.posts);
         });
-    })
+    });
   }
-  
+
   addPost(title, post) {
-    let object = {
+    const object = {
       title: title,
       text: post,
       tags: this.tags,
       files: this.files,
       date: this.date = formatDate(new Date(), 'MMMM dd, yyyy, H:mm', 'en')
-    }
-    let headers = {
+    };
+    const headers = {
       'Content-Type': 'application/json',
-      'x-auth': this.token
-    }
-    console.log(headers);
+      'x-auth': 'this.token'
+    };
+    // console.log(headers);
 
-    console.log(object);
-    this.httpClient.post('http://localhost:3000/posts/create-jwt', object, {headers})
+    // console.log(object);
+    this.httpClient.post('http://localhost:3000/posts/create-jwt', object, { headers })
     .subscribe(
-      (data:any) => {
+      (data: any) => {
           console.log(data);
         });
 
@@ -64,24 +64,24 @@ export class AddPage implements OnInit {
 
         this.postService.posts.push(object);
         this.postService.revPosts();
-        console.log(this.postService.revPosts());
+       // console.log(this.postService.revPosts());
   }
 
-  addTag(tag){
-    if(!!tag){
+  addTag(tag) {
+    if (!!tag) {
       this.tags.push(tag);
-      console.log(this.tags);
-    } else{
-      alert("Something went wrong")
+      // console.log(this.tags);
+    } else {
+      alert('Something went wrong');
     }
   }
 
-  deleteTag(i){
-    this.tags.splice(i,1);
+  deleteTag(i) {
+    this.tags.splice(i, 1);
   }
-  
-  deleteFile(i){
-    this.files.splice(i,1);
+
+  deleteFile(i) {
+    this.files.splice(i, 1);
     console.log(this.files);
   }
 
@@ -94,12 +94,12 @@ export class AddPage implements OnInit {
         handler: () => {
           this.files.push(
             {
-              icon: "images",
-              title: "Image",
-              url: "http://google.com"
+              icon: 'images',
+              title: 'Image',
+              url: 'http://google.com'
             });
-          console.log('Image clicked');
-          console.log(this.files);
+          // console.log('Image clicked');
+          // console.log(this.files);
         }
       }, {
         text: 'Video',
@@ -107,12 +107,12 @@ export class AddPage implements OnInit {
         handler: () => {
           this.files.push(
             {
-              icon: "videocam",
-              title: "Video",
-              url: "http://google.com"
+              icon: 'videocam',
+              title: 'Video',
+              url: 'http://google.com'
             });
-          console.log('Video clicked');
-          console.log(this.files);
+          // console.log('Video clicked');
+          // console.log(this.files);
         }
       }, {
         text: 'Audio',
@@ -120,12 +120,12 @@ export class AddPage implements OnInit {
         handler: () => {
           this.files.push(
             {
-              icon: "megaphone",
-              title: "Audio",
-              url: "http://google.com"
+              icon: 'megaphone',
+              title: 'Audio',
+              url: 'http://google.com'
             });
-          console.log('Audio clicked');
-          console.log(this.files);
+          // console.log('Audio clicked');
+          // console.log(this.files);
         }
       }, {
         text: 'Favorite',
@@ -144,8 +144,5 @@ export class AddPage implements OnInit {
     });
     await actionSheet.present();
   }
-
-
-
 }
 

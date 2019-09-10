@@ -15,15 +15,9 @@ export class AuthService {
     private httpClient: HttpClient, 
     private router: Router, 
     public storage: Storage,
-    /*public http: HTTP*/) { }
+    /*public http: HTTP*/) {
 
-  ngOnInit() {
-    this.token = this.storage.get('token').then(token => {
-    console.log(token)
-    this.token = token;
-    console.log(this.token);
-    })
-  }
+     }
 
   login(email: string, password: string) {
     return this.httpClient.post('http://localhost:3000/user/login', {email, password})
@@ -34,11 +28,16 @@ export class AuthService {
   }
 
   logout() {
-    this.storage.remove('token');
-    this.router.navigate(['login']);
+    this.storage.remove('token').then(() => {
+      this.router.navigate(['login']);
+    });
+  }
+
+  getToken(): Promise<string> {
+    return this.storage.get('token');
   }
   
   public get logIn(): boolean {
-    return (this.storage.get('token') !== null);
+    return this.storage.get('token') !== null;
   }
 }

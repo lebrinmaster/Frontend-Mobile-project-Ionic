@@ -65,18 +65,15 @@ export class PostService {
     })
   }
 
-  async deletePost(url, _id:any): Promise<any> {
+  async deletePost(url, id:any): Promise<any> {
     let headers = {
       'Content-type': 'application/json',
       'x-auth': await this.storage.get('token')
     }
-    console.log(_id);
+    console.log(id);
     console.log(headers);
     return this.httpClient.delete(url, {headers})
-    .toPromise()
-    .then(data =>{
-      console.log(data);
-    })
+    .toPromise();
   }
 
 }
